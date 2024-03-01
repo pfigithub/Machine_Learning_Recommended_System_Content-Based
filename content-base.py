@@ -61,7 +61,22 @@ inputMovies
 userMovies = moviesWithGenres_df[moviesWithGenres_df['movieId'].isin(inputMovies['movieId'].tolist())]
 userMovies
 
+#Resetting the index to avoid future issues
+userMovies = userMovies.reset_index(drop=True)
+#Dropping unnecessary issues due to save memory and to avoid issues
+userGenreTable = userMovies.drop('movieId', 1).drop('title', 1).drop('genres', 1).drop('year', 1)
+inputMovies['rating']
 
+#Dot produt to get weights
+userProfile = userGenreTable.transpose().dot(inputMovies['rating'])
+#The user profile
+userProfile
+
+#Now let's get the genres of every movie in our original dataframe
+genreTable = moviesWithGenres_df.set_index(moviesWithGenres_df['movieId'])
+#And drop the unnecessary information
+genreTable = genreTable.drop('movieId', 1).drop('title', 1).drop('genres', 1).drop('year', 1)
+genreTable.head()
 
 
 
