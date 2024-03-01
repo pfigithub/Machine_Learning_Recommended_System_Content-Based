@@ -78,6 +78,33 @@ genreTable = moviesWithGenres_df.set_index(moviesWithGenres_df['movieId'])
 genreTable = genreTable.drop('movieId', 1).drop('title', 1).drop('genres', 1).drop('year', 1)
 genreTable.head()
 
+#Multiply the genres by the weights and then take the weighted average
+recommendationTable_df = ((genreTable*userProfile).sum(axis=1))/(userProfile.sum())
+recommendationTable_df.head()
+
+#Sort our recommendations in descending order
+recommendationTable_df = recommendationTable_df.sort_values(ascending=False)
+#Just a peek at the values
+recommendationTable_df.head()
+
+#The final recommendation table
+movies_df.loc[movies_df['movieId'].isin(recommendationTable_df.head(20).keys())]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
