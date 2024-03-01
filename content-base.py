@@ -35,8 +35,15 @@ moviesWithGenres_df = moviesWithGenres_df.fillna(0)
 ratings_df = ratings_df.drop('timestamp', 1)
 ratings_df.head()
 
-
-
+# input user
+userInput = [
+            {'title':'Breakfast Club, The', 'rating':5},
+            {'title':'Toy Story', 'rating':3.5},
+            {'title':'Jumanji', 'rating':2},
+            {'title':"Pulp Fiction", 'rating':5},
+            {'title':'Akira', 'rating':4.5}
+         ] 
+inputMovies = pd.DataFrame(userInput)
 
 
 
