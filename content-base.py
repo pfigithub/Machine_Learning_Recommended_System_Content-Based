@@ -57,6 +57,9 @@ inputMovies = inputMovies.drop('genres', 1).drop('year', 1)
 #dataframe or it might spelled differently, please check capitalisation.
 inputMovies
 
+#Filtering out the movies from the input
+userMovies = moviesWithGenres_df[moviesWithGenres_df['movieId'].isin(inputMovies['movieId'].tolist())]
+userMovies
 
 
 
